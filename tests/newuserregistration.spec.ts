@@ -17,7 +17,7 @@ test.describe("New User Registration Form", () => {
       firstName: "John",
       lastName: "Doe",
       email: "john.doe@gmail.com",
-      country: "Saudi Arabia",
+      country: "Canada",
       title: "Mr.",
       dob: "1990-01-01",
       doj: "10/11/2020",
