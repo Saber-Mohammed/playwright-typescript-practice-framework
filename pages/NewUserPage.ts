@@ -43,33 +43,14 @@ export class NewUserPage {
     this.clearButton = page.locator('[data-testid="forms-clear"]');
     this.submitButton = page.locator('[data-testid="forms-submit"]');
     this.successMessage = page.locator('[data-testid="forms-success"]');
-//   // Dropdowns
-//   countryDropdown = this.page.getByTestId('forms-country');
-//   titleDropdown = this.page.getByTestId('forms-title');
-//   phoneCodeDropdown = this.page.getByTestId('forms-phone-code');
-
-//   // Text inputs
-//   firstNameInput = this.page.getByTestId('forms-first-name');
-//   lastNameInput = this.page.getByTestId('forms-last-name');
-//   dateOfBirthInput = this.page.locator('#forms-dob');
-//   dateOfJoiningInput = this.page.getByTestId('forms-doj');
-//   emailInput = this.page.getByTestId('forms-email');
-//   phoneNumberInput = this.page.getByTestId('forms-phone-number');
-
-//   // Communication preference radio buttons
-//   emailCommunicationRadio = this.page.getByTestId('forms-comm-email');
-//   phoneCommunicationRadio = this.page.getByTestId('forms-comm-phone');
-
-//   // Buttons
-//   clearButton = this.page.getByTestId('forms-clear');
-//   submitButton = this.page.getByTestId('forms-submit');
-
-//   // Submission result
-//   successMessage = this.page.getByTestId('forms-success');
     }
+
+    // Navigate to the New User Registration Form page
     async goTo() {
         await this.page.goto('https://www.qapractice.com/practice-forms');
     }
+    
+    // Fill the form with provided user data
     async fillForm(userData: { firstName: string; lastName: string; email: string; country: string; title: string; dob: string; doj: string; countryCode: string; phoneNumber: string; prefCommEmail: boolean; prefCommPhone: boolean }) {
         await this.firstNameInput.fill(userData.firstName);
         await this.lastNameInput.fill(userData.lastName);
@@ -91,10 +72,13 @@ export class NewUserPage {
             await this.prefCommPhone.uncheck();
         }
     }
+   
+    // Submit the form
     async submitForm() {
         await this.submitButton.click();
     }
-
+    
+    // Verify that the success message is displayed after form submission
     async verifySuccessMessage() {
     await expect(this.successMessage).toBeVisible();
     await expect(this.successMessage)
